@@ -6,18 +6,19 @@ using System.Threading.Tasks;
 
 namespace NorthwindEfCodeFirst.Entities
 {
-    public class Customer
+    public class Order
     {
         public Customer()
         {
             Orders = new List<Order>();
         }
+        public int OrderID { get; set; }
         public string CustomerID { get; set; }
-        public string CompanyName { get; set; }
-        public string ContactName { get; set; }
-        public string City { get; set; }
-        public string Country { get; set; }
+        public string ShipCity { get; set; }
+        public string ShipCountry { get; set; }
+        public string OrderDate { get; set; }
         public List<Order> Orders { get; set; }
+
 
 
     }
