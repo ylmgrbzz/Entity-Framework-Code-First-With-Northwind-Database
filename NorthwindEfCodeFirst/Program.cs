@@ -10,6 +10,45 @@ namespace NorthwindEfCodeFirst
             //One();
 
             //AddMethod();
+
+            //AddCustomerOrder();
+
+            //RemoveOrder();
+
+
+            UpdateMethod();
+
+            Console.ReadLine();
+        }
+
+        private static void UpdateMethod()
+        {
+            using (var northwindContext = new NorthwindContext())
+            {
+                Order order = northwindContext.Orders.Find(1);
+
+                order.ShipCity = "Ankara";
+
+                northwindContext.SaveChanges();
+
+            }
+        }
+
+        private static void RemoveOrder()
+        {
+            using (var northwindContext = new NorthwindContext())
+            {
+                Order order = northwindContext.Orders.Find(1);
+
+                northwindContext.Orders.Remove(order);
+
+                northwindContext.SaveChanges();
+
+            }
+        }
+
+        private static void AddCustomerOrder()
+        {
             using (var northwindContext = new NorthwindContext())
 
             {
@@ -23,9 +62,6 @@ namespace NorthwindEfCodeFirst
                 });
                 northwindContext.SaveChanges();
             }
-
-
-            Console.ReadLine();
         }
 
         private static void AddMethod()
