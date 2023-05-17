@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace NorthwindEfCodeFirst.Entities
 {
-    public class Customer
+    public class customer
     {
-        public Customer()
+        public customer()
         {
             Orders = new List<Order>();
         }

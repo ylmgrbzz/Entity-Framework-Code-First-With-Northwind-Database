@@ -14,7 +14,7 @@ namespace NorthwindEfCodeFirst.Contexts
         //public NorthwindContext(DbContextOptions<NorthwindContext> options) : base(options)
         //{
         //}
-        public DbSet<Customer> Customers { get; set; }
+        public DbSet<customer> Customers { get; set; }
         public DbSet<Order> Orders { get; set; }
 
     }

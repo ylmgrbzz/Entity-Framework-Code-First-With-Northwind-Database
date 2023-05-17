@@ -1,4 +1,5 @@
-﻿using NorthwindEfCodeFirst.Contexts;
+﻿using Microsoft.EntityFrameworkCore;
+using NorthwindEfCodeFirst.Contexts;
 using NorthwindEfCodeFirst.Entities;
 
 namespace NorthwindEfCodeFirst
@@ -15,10 +16,37 @@ namespace NorthwindEfCodeFirst
 
             //RemoveOrder();
 
+            //UpdateMethod();
 
-            UpdateMethod();
+            //Linq();
+
+            using (var northwindContext = new NorthwindContext())
+            {
+                var result = northwindContext.Customers.Where(c => c.CustomerID == "Yalim").Include("Orders");
+
+                foreach (var customer in result)
+                {
+                    Console.WriteLine("{0},{1}", customer.CustomerID, customer.ContactName, customer.Orders.Count);
+
+                }
+            }
+
 
             Console.ReadLine();
+        }
+
+        private static void Linq()
+        {
+            using (var northwindContext = new NorthwindContext())
+            {
+                var result = northwindContext.Customers.Where(c => c.City == "London" || c.Country == "UK").
+                    OrderBy(c => c.ContactName).Select(cus => new { cus.CustomerID, cus.ContactName });
+
+                foreach (var order in result)
+                {
+                    Console.WriteLine("{0},{1}", customer.CustomerID, customer.ContactName);
+                }
+            }
         }
 
         private static void UpdateMethod()
@@ -52,7 +80,7 @@ namespace NorthwindEfCodeFirst
             using (var northwindContext = new NorthwindContext())
 
             {
-                Customer customer = northwindContext.Customers.Find("Yalim");
+                customer customer = northwindContext.Customers.Find("Yalim");
                 customer.Orders.Add(new Order
                 {
                     OrderID = 1,
@@ -68,7 +96,7 @@ namespace NorthwindEfCodeFirst
         {
             using (var northwindContext = new NorthwindContext())
             {
-                var customer = new Customer
+                var customer = new customer
                 {
                     CustomerID = "Yalim",
                     CompanyName = "Gürbüz",
